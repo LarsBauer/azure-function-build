@@ -1,6 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:3.1
 
-ENV PATH="$PATH:$HOME/.dotnet/tools"
+# add dotnet global tools to path
+ENV PATH="$PATH:/root/.dotnet/tools"
 
 # install Java
 RUN apt-get update && apt-get install -y openjdk-11-jre
