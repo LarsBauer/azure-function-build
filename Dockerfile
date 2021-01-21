@@ -1,11 +1,12 @@
 FROM mcr.microsoft.com/dotnet/sdk:3.1
 
+ENV PATH="$PATH:$HOME/.dotnet/tools"
+
 # install Java
 RUN apt-get update && apt-get install -y openjdk-11-jre
 
 # install SonarScanner
-RUN export PATH="$PATH:$HOME/.dotnet/tools" \
-    && dotnet tool install --global dotnet-sonarscanner
+RUN dotnet tool install --global dotnet-sonarscanner
 
 # install Azure CLI
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
