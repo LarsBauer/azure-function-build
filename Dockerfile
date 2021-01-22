@@ -3,8 +3,9 @@ FROM mcr.microsoft.com/dotnet/sdk:3.1
 # add dotnet global tools to path
 ENV PATH="$PATH:/root/.dotnet/tools"
 
-# install Java
-RUN apt-get update && apt-get install -y openjdk-11-jre
+# install requirements
+RUN apt-get update \
+    && apt-get install -y openjdk-11-jre zip
 
 # install SonarScanner
 RUN dotnet tool install --global dotnet-sonarscanner
