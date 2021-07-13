@@ -10,5 +10,5 @@ Supported versions:
 | language                  | docker tag   |
 | ------------------------- | ------------ |
 | .NET Core 3.1             | 3.1          |
-| .NET 5                    | 5.0          |
+| .NET 5                    | 5.0 (latest) |
 | .NET 5 (isolated process) | 5.0-isolated |
