@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0
 ENV PATH="$PATH:/root/.dotnet/tools"
 
 # openjdk installation fails if this directory does not exist
-RUN RUN mkdir -p /usr/share/man/man1
+RUN mkdir -p /usr/share/man/man1
 
 # add Microsoft package sources
 RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \

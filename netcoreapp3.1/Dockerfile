@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/dotnet/sdk:3.1
 ENV PATH="$PATH:/root/.dotnet/tools"
 
 # openjdk installation fails if this directory does not exist
-RUN RUN mkdir -p /usr/share/man/man1
+RUN mkdir -p /usr/share/man/man1
 
 # install required packages
 RUN apt-get update \
