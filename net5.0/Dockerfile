@@ -4,8 +4,8 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0
 ENV PATH="$PATH:/root/.dotnet/tools"
 
 # install SonarScanner
-RUN apt update \
-    && apt install -y openjdk-11-jre \
+RUN apt-get update \
+    && apt-get install -y openjdk-11-jre \
     && dotnet tool install --global dotnet-sonarscanner
 
 # install Azure CLI
