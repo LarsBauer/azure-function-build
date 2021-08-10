@@ -2,34 +2,34 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
     strategy:
       matrix:
-        tags: [3.1,net5.0,net5.0-isolated]
-        
+        tags: [3.1, 5.0, 5.0-isolated]
+
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      
-    - name: Docker Setup Buildx
-      uses: docker/setup-buildx-action@v1
-      
-    - name: Docker Login
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
-        
-    - name: Build and push Docker images
-      uses: docker/build-push-action@v2
-      with:
-        context: ./${{ matrix.tags }}
-        cache-from: "type=gha"
-        cache-to: "type=gha,mode=max"
-        push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/azure-function-build:${{ matrix.tags }}
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Docker Setup Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Docker Login
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v2
+        with:
+          context: ./${{ matrix.tags }}
+          cache-from: "type=gha"
+          cache-to: "type=gha,mode=max"
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/azure-function-build:${{ matrix.tags }}
