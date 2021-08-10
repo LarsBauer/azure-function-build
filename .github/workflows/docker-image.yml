@@ -1,13 +1,17 @@
-name: .NET Core 3.1
+name: Docker Image CI
 
 on:
   push:
     branches: [ main ]
-    paths: "netcoreapp3.1/**"
 
 jobs:
   build:
+    strategy:
+      matrix:
+        tags: [3.1,net5.0,net5.0-isolated]
+        
     runs-on: ubuntu-latest
+    
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -24,8 +28,8 @@ jobs:
     - name: Build and push Docker images
       uses: docker/build-push-action@v2
       with:
-        context: "./netcoreapp3.1"
+        context: ./**${{ matrix.images }}
         cache-from: "type=gha"
         cache-to: "type=gha,mode=max"
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/azure-function-build:3.1
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/azure-function-build:${{ matrix.tags }}
