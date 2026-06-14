@@ -1,3 +1,9 @@
+> [!CAUTION]
+> **This project is deprecated and no longer maintained.**
+> The Docker image and its dependencies (including .NET Core 3.1 and .NET 5) have reached end-of-life. No further updates, bug fixes, or security patches will be provided.
+>
+> If you are still using this image, please migrate to an up-to-date solution.
+
 # azure-function-build
 
 This image is based on [dotnet/sdk](https://hub.docker.com/_/microsoft-dotnet-sdk/) from Microsoft and contains the following tools:
